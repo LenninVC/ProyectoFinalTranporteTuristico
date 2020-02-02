@@ -1,0 +1,107 @@
+﻿@model Cibertec.Models.Colaborador
+
+<h3>¿Estás Seguro de Eliminar Este Colaborador?</h3>
+<div>
+    @*<h4>Colaborador</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Documento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Documento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellidos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailPersonal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+
+    @Messages.Message("inUse", "Delete", "danger", "Este Producto está en uso en este momento.")
+
+    @using (Ajax.BeginForm("Delete", new { Controller = "Colaborador" },
+                            new AjaxOptions
+                            {
+                                HttpMethod = "POST",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "modal-body",
+                                OnSuccess = "colaborador.success('delete');"
+                            },
+                            htmlAttributes: new { id = "deleteForm" }
+                          )
+            )
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color" id="btn-save">
+            <input type="submit" value="Delete" class="btn btn-default" />
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $.validator.unobtrusive.parse("#deleteForm");
+        $('#inUse').addClass('hidden');
+        colaborador.addCustomer("@Model.IdColaborador");
+        colaborador.validate("@Model.IdColaborador");
+    });
+
+    colaborador.closeModal = function () {
+        if (!colaborador.recordInUse)
+            colaborador.removeHubCustomer("@Model.IdColaborador");
+    };
+</script>

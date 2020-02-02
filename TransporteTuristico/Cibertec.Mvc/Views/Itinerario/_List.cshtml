@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Cibertec.Models.Itinerario>
+
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Conductor)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Licencia)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Origen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destino)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Costo)
+            </th>
+            <th>
+                Activo
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Conductor)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Licencia)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Origen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destino)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Costo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    <a href="#" onclick="cibertec.getModal('@Url.Action("Update", new { id = item.IdItinerario })');
+                       return false;" data-toggle="modal" data-target="#modal-container"
+                       class="btn btn-warning btn-sm">
+                        <span class="glyphicon glyphicon-edit"> Edit </span>
+                    </a>
+                    <a href="#" onclick="cibertec.getModal('@Url.Action("Delete", new { id = item.IdItinerario })');
+                       return false;" data-toggle="modal" data-target="#modal-container"
+                       class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-trash"> Delete </span>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+

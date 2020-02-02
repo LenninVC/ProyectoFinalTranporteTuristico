@@ -1,0 +1,7 @@
+﻿.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+li {
+    color: #ffffff;
+}

@@ -1,0 +1,71 @@
+﻿
+@Messages.AlertMessages()
+
+<div class="form-horizontal">
+    <div class="form-row ">
+        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+            <label class="col-lg-2">Documento</label>
+            <input class="col-lg-8 col-md-4 form-control" type="text" placeholder="Search" id="NumeroDni" aria-label="Search">
+            <button href="#!" class="col-lg-2 col-sm-2 btn btn-outline-white" id="btnBuscar" type="submit">Search</button>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="inputEmail4">Nombre</label>
+            <input type="email" class="form-control" id="Nombre" placeholder="Ingrese nombre">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="inputEmail4">Direccion</label>
+            <input type="email" class="form-control" id="Direccion" placeholder="Ingrese Direccion">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label for="example-date-input" class="col-2 col-form-label">Fecha Inicio</label>
+        <div class="col-10">
+            <input class="form-control" type="date" value="2020-08-19" id="fechaInicio">
+        </div>
+    </div>
+    <div class="form-row">
+        <label for="example-date-input" class="col-2 col-form-label">Fecha Fin</label>
+        <div class="col-10">
+            <input class="form-control" type="date" value="2020-08-19" id="fechaFin">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="inputEmail4">Ruta</label>
+            <select class="form-control" id="cboEjemplo">
+                <option value="">Seleccione uno...</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label for="example-date-input" class="col-2 col-form-label">Costo</label>
+        <div class="col-10">
+            <input class="form-control" type="number" value="0" id="Costo" readonly>
+        </div>
+    </div>
+    <br />
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <button type="submit" name="SaveData" value="Create" id="btnsave" style="text-align:center" class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/App_JS/cibertec.js"></script>
+<script src="~/App_JS/reserva.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $.validator.unobtrusive.parse("#editForm");
+        @*$('#inUse').addClass('hidden');
+        customer.addCustomer("@Model.IdCliente");
+        customer.validate("@Model.IdCliente");*@
+    });
+</script>

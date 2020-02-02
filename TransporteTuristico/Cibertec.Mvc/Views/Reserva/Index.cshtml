@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Cibertec.Models.Reserva>
+@{
+    ViewBag.Title = "Reserva Index";
+}
+<h2 style="text-align:center">Reservas</h2>
+@Messages.AlertMessages()
+<p>
+    <a href="#" onclick="cibertec.getModal('@Url.Action("Create")'); return false;"
+       data-toggle="modal" data-target="#modal-container" class="btn btn-success btn-sm">
+        <span class="glyphicon glyphicon-plus">New</span>
+    </a>
+</p>
+
+<div class="pagination"></div>
+<div class="content"></div>
+<div class="pagination"></div>
+
+@Modal.GetModal("Reserva", "reserva.closeModal();")
+
+<script src="~/Scripts/jquery.bootpag.min.js"></script>
+<script src="~/App_JS/cibertec.js"></script>
+<script src="~/App_JS/reserva.js"></script>
+
+@* Scripts para el SignalR*@
+<script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+<script src="/signalr/hubs"></script>
+<script type="text/javascript">
+    $(function () {
+        var customerHub = $.connection.reservaHub;
+        $.connection.hub.start().done(function () {
+            console.log("Connected to Hub...");
+
+        });
+    })</script>
